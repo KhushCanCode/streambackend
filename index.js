@@ -8,9 +8,9 @@ const app = express();
 app.use(cors());
 
 const videoFileMap= {
-    'dancin': 'public/videos/dancin.mp4',
-    'izazat': 'public/videos/izazat.mp4',
-    'werollin': 'public/videos/werollin.mp4'
+    'dancin': 'videos/dancin.mp4',
+    'izazat': 'videos/izazat.mp4',
+    'werollin': 'videos/werollin.mp4'
 
 }
 
