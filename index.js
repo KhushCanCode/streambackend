@@ -22,6 +22,7 @@ app.get("/videos/:filename", (req,res)=>{
     const filename = req.params.filename;
     const filePath = videoFileMap[filename];
     if(!filePath){
+        console.log(filePath, filename);
         return res.status(404).send('File Not Found');
     }
 
