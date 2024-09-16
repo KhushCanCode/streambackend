@@ -8,9 +8,9 @@ const app = express();
 app.use(cors());
 
 const videoFileMap= {
-    'dancin': 'videos/dancin.mp4',
-    'izazat': 'videos/izazat.mp4',
-    'werollin': 'videos/werollin.mp4'
+    'dancin': '/videos/dancin.mp4',
+    'izazat': '/videos/izazat.mp4',
+    'werollin': '/videos/werollin.mp4'
 
 }
 
@@ -25,7 +25,7 @@ app.get("/videos/:filename", (req,res)=>{
         console.log(filePath, filename);
         return res.status(404).send('File Not Found');
     }
-
+    res.sendFile(filePath, { root: './public' });
     const stat = fs.statSync(filePath);
     const fileSize = stat.size;
     const range = req.headers.range;
