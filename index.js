@@ -7,12 +7,15 @@ import 'dotenv/config';
 const app = express();
 app.use(cors());
 
+// Serve static files from the 'public' folder
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 // Map of video files
 const videoFileMap = {
-    'dancin': 'public/dancin.mp4',
-    'izazat': 'public/izazat.mp4',
-    'werollin': 'public/werollin.mp4'
-};
+    'dancin': 'dancin.mp4',
+    'izazat': 'izazat.mp4',
+    'werollin': 'werollin.mp4'
+}
 
 // Route to test server
 app.get("/", (req, res) => {
@@ -22,9 +25,9 @@ app.get("/", (req, res) => {
 // Video streaming route
 app.get("/videos/:filename", (req, res) => {
     const filename = req.params.filename;
-    const filePath = path.resolve(videoFileMap[filename]);
+    const filePath = path.join(__dirname, 'public', videoFileMap[filename]);
 
-    if (!filePath || !fs.existsSync(filePath)) {
+    if (!fs.existsSync(filePath)) {
         console.log(`File not found: ${filename}`);
         return res.status(404).send('File Not Found');
     }

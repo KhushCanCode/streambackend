@@ -8,13 +8,6 @@
     ],
     "routes": [
       {
-        "src": "/(.*).mp4",
-        "headers": {
-          "Content-Type": "video/mp4"
-        },
-        "dest": "/public/$1.mp4"
-      },
-      {
         "src": "/(.*)",
         "dest": "/"
       }
